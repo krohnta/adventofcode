@@ -29,3 +29,13 @@ while first_five_of_hashed_answer != "00000":
 
 print("The lowest positive number appended to", fixed_input, "resulting \nin an MD5 hash starting with five zeros is", variable_input)
 
+# 5) do the same for 6 zeroes
+
+while first_five_of_hashed_answer != "000000":
+	variable_input += 1
+	answer = fixed_input + str(variable_input)
+	first_five_of_hashed_answer = hashlib.md5(answer.encode()).hexdigest()[:6]
+
+# 4) have a nice output
+
+print("The lowest positive number appended to", fixed_input, "resulting \nin an MD5 hash starting with six zeros is", variable_input)
