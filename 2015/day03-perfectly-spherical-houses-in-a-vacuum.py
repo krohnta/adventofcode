@@ -8,6 +8,19 @@
 #* > delivers presents to 2 houses: one at the starting location, and one to the east.
 #* ^>v< delivers presents to 4 houses in a square, including twice to the house at his starting/ending location.
 #^v^v^v^v^v delivers a bunch of presents to some very lucky children at only 2 houses.
+#
+#--- Part Two ---
+#The next year, to speed up the process, Santa creates a robot version of himself, Robo-Santa, to deliver presents with him.
+#
+#Santa and Robo-Santa start at the same location (delivering two presents to the same starting house), then take turns moving based on instructions from the elf, who is eggnoggedly reading from the same script as the previous year.
+#
+#This year, how many houses receive at least one present?
+#
+#For example:
+#
+#^v delivers presents to 3 houses, because Santa goes north, and then Robo-Santa goes south.
+#^>v< now delivers presents to 3 houses, and Santa and Robo-Santa end up back where they started.
+#^v^v^v^v^v now delivers presents to 11 houses, with Santa going one direction and Robo-Santa going the other.
 
 # 1) read input into string for iteration
 input = open("day03.txt", "r").read()
@@ -44,22 +57,50 @@ for i in range(-south_counter,north_counter):
 	for j in range(-west_counter,east_counter):
 		visit_counter.append(0)
 
-# 3) visit houses with Santa
-current_location = south_counter*one_line+east_counter
-for i in input:
+# 3) split input between Santa and Robo-Santa
+visited_by_santa = ""
+visited_by_robo = ""
+for i in range(len(input)):
+	if i%2 == 0:
+		visited_by_santa += input[i]
+	else:
+		visited_by_robo += input[i]
+
+
+# 3a) visit houses with Santa and Robo-Santa, both starting at (0,0)
+current_location_santa = south_counter*one_line+east_counter
+current_location_robo = south_counter*one_line+east_counter
+for i in visited_by_santa:
+	# Santa delivers a present
 	if i == "^":
-		visit_counter[current_location] += 1
-		current_location += one_line
+		visit_counter[current_location_santa] += 1
+		current_location_santa += one_line
 	elif i == "v":
-		visit_counter[current_location] += 1
-		current_location -= one_line
+		visit_counter[current_location_santa] += 1
+		current_location_santa -= one_line
 	elif i == ">":
 		# if I'm not mistaken, I do not have to take care of running over the borders of the cartesian coordinates!
-		visit_counter[current_location] += 1
-		current_location += 1
+		visit_counter[current_location_santa] += 1
+		current_location_santa += 1
 	elif i == "<":
-		visit_counter[current_location] += 1
-		current_location -= 1
+		visit_counter[current_location_santa] += 1
+		current_location_santa -= 1
+
+for i in visited_by_robo:
+	# Robo-Santa delivers a present
+	if i == "^":
+		visit_counter[current_location_robo] += 1
+		current_location_robo += one_line
+	elif i == "v":
+		visit_counter[current_location_robo] += 1
+		current_location_robo -= one_line
+	elif i == ">":
+		# if I'm not mistaken, I do not have to take care of running over the borders of the cartesian coordinates!
+		visit_counter[current_location_robo] += 1
+		current_location_robo += 1
+	elif i == "<":
+		visit_counter[current_location_robo] += 1
+		current_location_robo -= 1
 
 # 4) find houses with at least one visit
 present_counter = 0
@@ -68,7 +109,7 @@ for i in range(len(visit_counter)):
 		present_counter += 1
 
 # 5) have a nice output
-print("Santa visits", present_counter, "houses.")
+print("Santa and Robo-Santa visit", present_counter, "houses.")
 ### DEBUG INFORMATION
 #print(north_counter, south_counter, east_counter, west_counter)
 #print(visit_counter[south_counter*one_line+east_counter])
