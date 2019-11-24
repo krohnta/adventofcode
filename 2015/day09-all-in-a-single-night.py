@@ -17,6 +17,11 @@
 #The shortest of these is London -> Dublin -> Belfast = 605, and so the answer is 605 in this example.
 #What is the distance of the shortest route?
 
+#--- Part Two ---
+#The next year, just to show off, Santa decides to take the route with the longest distance instead.
+#He can still start and end at any two (different) locations he wants, and he still must visit each location exactly once.
+#For example, given the distances above, the longest route would be 982 via (for example) Dublin -> London -> Belfast.
+#What is the distance of the longest route?
 
 #import regex package
 import re
@@ -46,10 +51,13 @@ possible_routes = [list(element) for element in possible_routes]
 
 
 # 3) calculate distance for each possible route and get minimum (same loop, saves at least a little bit)
+# 3a) add solution for part 2 / longest path also within the same loop
 def find_distance(start,end):
 	for i in range(len(puzzle_input)):
 		if (start == puzzle_input[i][0] and end == puzzle_input[i][1]) or (start == puzzle_input[i][1] and end == puzzle_input[i][0]):
 			return puzzle_input[i][2]
+
+max_route_length = 0
 
 for route in possible_routes:
 	distance = 0
@@ -59,6 +67,10 @@ for route in possible_routes:
 	if distance < min_route_length:
 		min_route_length = distance
 		shortest_route = route
+	if distance > max_route_length:
+		max_route_length = distance
+		longest_route = route
 
 # 4) have a nice output
 print("The shortest route is\n", *shortest_route, sep = ":")
+print("The longest route is\n", *longest_route, sep = ":")
