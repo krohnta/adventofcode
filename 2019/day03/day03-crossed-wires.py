@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-# FIXME This is broken. I tend to start from scratch again after having learned how to use numpy. I think this would be easier to do with Matlab. After ~15 years not having used Matlab.
+
+# I found a nice solution for 2015/day03 which does not require the whole grid but only appends "visited" coordinates. Maybe I can get that one to work for this problem?!?
 
 
 # import regex package
@@ -7,10 +8,9 @@ import re
 
 # 1) read input into list of integers
 puzzle_input = []
-#with open("day03.txt", "r") as file:
+with open("day03.txt", "r") as file:
 ### DEBUG INPUT
-#with open("day03-test2.txt", "r") as file:
-with open("day03-test1.txt", "r") as file:
+#with open("day03-test1.txt", "r") as file:
 	for line in file:
 		puzzle_input.append(re.split(",", line.rstrip()))
 
@@ -45,69 +45,61 @@ for i in puzzle_input:
 				max_lr_counter += move
 	movement.append([''.join(movement_raw)])
 
-#oneline = left_counter + right_counter
-oneline = -min_lr_counter + max_lr_counter
+# Derived from a solution to 2015/day03 - I understand the math behind it but I would never have come up with such an idea. Too much thinking about the whole matrix instead of just a sparse one I guess.
 
-# create a grid with [False, False] as coordinate for both lines not having "visited" the coordinate yet
-# visit_tracker = [False, False]*(up_counter+down_counter)*(left_counter+right_counter)
-# again, in terms of cartesian coordinates, the mapping should be:
-# oneline = dimenson in left-right direction
-# visit_tracker[0] is corner left-down == (-left_counter, -down_counter)
-# visit_tracker[left_counter] is "middle" ground == (0, -down_counter)
-# visit_tracker[oneline] is corner right-down == (right_counter,-down_counter)
-# visit_tracker[2*oneline] is (right_counter,-down_counter+1)
-# visit_tracker[down_counter*oneline+left_counter] middle of system == (0,0)
+coords_a = [0,0]
+coord_list_a = ["0,0"]
+for i in movement[0][0]:
+	if i == "U":
+		coords_a[1] += 1
+	elif i == "D":
+		coords_a[1] -= 1
+	elif i == "R":
+		coords_a[0] += 1
+	elif i == "L":
+		coords_a[0] -= 1
+	coord_list_a.append(str(coords_a[0])+","+str(coords_a[1]))
 
-#visit_tracker = [[0, 0]]*(up_counter+down_counter)*(left_counter+right_counter)
-visit_tracker = [[0, 0]]*(max_ud_counter-min_ud_counter)*(max_lr_counter-min_lr_counter)
+coords_b = [0,0]
+coord_list_b = ["0,0"]
+for i in movement[1][0]:
+	if i == "U":
+		coords_b[1] += 1
+	elif i == "D":
+		coords_b[1] -= 1
+	elif i == "R":
+		coords_b[0] += 1
+	elif i == "L":
+		coords_b[0] -= 1
+	coord_list_b.append(str(coords_b[0])+","+str(coords_b[1]))
 
-# FIXME I don't understand why this function seems to change EVERY entry in visit_tracker while it should only change the one in current_location :(
-def run_along(input_string,nr):
-	current_location = (-min_ud_counter) * oneline + max_lr_counter
-	# this equals (0,0) in my grid!
-	print(visit_tracker[current_location])
-	visit_tracker[current_location][nr] = 5
-	print(visit_tracker[current_location])
-	for i in input_string:
-		if i == "U":
-			visit_tracker[current_location][nr] = 1
-			current_location += oneline
-			print(visit_tracker[0:5])
-		elif i == "D":
-			visit_tracker[current_location][nr] = 2
-			current_location -= oneline
-			print(visit_tracker[0:5])
-		elif i == "R":
-#			print(visit_tracker[down_counter * oneline + left_counter+1])
-			visit_tracker[current_location][nr] = 3
-			current_location += 1
-			print(visit_tracker[0:5])
-		elif i == "L":
-			visit_tracker[current_location][nr] = 4
-			current_location -= 1
-			print(visit_tracker[0:5])
+# Now, I have two arrays with lots of coordinates in which I have to
+# a) identify the ones which appear in both lists (=crossings)
+# b) of those identify the one which is closest to ["0,0"] by Manhattan distance
+# Part b) should be easy as the coordinates all contain the distance
 
-run_along(movement[0][0],0)
-#run_along(movement[1][0],1)
+# After 2 min googling: of course, there's a method for that in Python m)
+crossings = list(set(coord_list_a).intersection(coord_list_b))
 
-current_location = (-min_ud_counter) * oneline + max_lr_counter
-# this equals (0,0) in my grid!
-print(visit_tracker[current_location])
-print(visit_tracker[current_location+1])
-visit_tracker[current_location][0] = 5
-print(visit_tracker[current_location])
-print(visit_tracker[current_location+1])
+# part b) via brute-force: calculate all Manhattan distances and take the minimum of them.
+distances = []
+for location in crossings:
+	distances.append(location.split(","))
+
+min_dist = []
+for i in distances:
+	i[0] = int(i[0])
+	i[1] = int(i[1])
+	manhattan_dist = abs(i[0])+abs(i[1])
+	min_dist.append(manhattan_dist)
+
+min_dist.sort()
+
 
 ### DEBUG OUTPUT
-#print(puzzle_input)
-#print(puzzle_input[0][1][0])
-#print(puzzle_input[0][1][1:])
-print(max_ud_counter, min_ud_counter, min_lr_counter, max_lr_counter)
-print(oneline)
-print(len(visit_tracker))
-print(visit_tracker[0:5])
-#print(len(movement))
-#print(movement[0])
-#print(len(movement[1]))
-
-#print(visit_tracker[down_counter * oneline + left_counter+1])
+#print(len(set(coord_list_a)))
+#print(len(set(coord_list_b)))
+#print(len(set(crossings)))
+#print(crossings[0:5])
+#print(distances[0:5])
+print(min_dist[1])
