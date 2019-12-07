@@ -1,5 +1,4 @@
 ## Advent of Code
-
 I have no idea what I'm doing, but thanks to [@scy](https://github.com/scy/advent-of-code), I just stumbled upon [Advent of Code](https://adventofcode.com/). 
 
 It looks quite scary, and I'm not sure whether I can motivate myself enough to get through, however, I cannot say I never tried :)
@@ -14,7 +13,7 @@ It looks quite scary, and I'm not sure whether I can motivate myself enough to g
 | 2016 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
 | 2017 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
 | 2018 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 2019 | ** | ** |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 2019 | ** | ** | ** | *  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
 
  
 
@@ -28,3 +27,5 @@ My main issues are definitely in the 'how can I do such a thing in Python?' – 
 2019-11-30: One week, and I've gotten 22 points so far for 2015. And now I'm really getting to the point where I don't understand the problem (i.e. day 7 with logic gates and bitwise operations) or have an idea about a useful data structure but don't understand how to handle that structure (i.e. day 16 with Aunt Sue where I'd like to use dictionaries - I understand the theory but I have serious issues in implementing even reading the input data).
 
 I guess I'll pause 2015 for now and wait for 2019 to begin tomorrow morning.
+
+2019-12-07: Work takes its toll, and while I often got to read the puzzle in the morning, I did not have the time to think about it during the day. And in the evenings, there was other stuff to do or I was already too tired to think about anything anymore. However, today I wanted to get day 3, part 2 to work (after lots of trial and error during last week's evenings), and it took me almost an hour of fiddling around with my code until I needed to google some Python functionality – and then notice that I have no internet access. Enjoy the little things :) And yes, that code is still far from enjoyable. I should probably do more list comprehension.
