@@ -22,20 +22,17 @@ for i in range(len(puzzle_input)//size_layer):
 
 # 4) Determine pixel color by creating a layer equal to the final image and set the corresponding positions according to the rendering
 final_image = list(image[0])
-# append pseudo boolean f to determine whether a pixel has been touched (and therefore must not be changed again)
+# append pseudo boolean t/f to determine whether a pixel has been touched (and therefore must not be changed again), black/white pixels in uppermost layer must not be changed (took me ~2 hours of debugging)
 for i in range(len(final_image)):
-	final_image[i] += "f"
+	if final_image[i] == "2":
+		final_image[i] += "f"
+	else:
+		final_image[i] += "t"
 
 
 for layer in range(len(image)):
-	# handle first line separately to avoid overwriting black/white with transparent
 	for i in range(len(image[layer])):
-		if layer == 0:
-			if image[0][i] == "2" and image[1][i] == "2":
-				final_image[i] = "2f"
-			else:
-				final_image[i] = image[0][i] + "t"
-		elif final_image[i][1] == "f":
+		if final_image[i][1] == "f":
 			if image[layer][i] == "2" and image[layer+1][i] == "2":
 				final_image[i] = "2f"
 			else:
