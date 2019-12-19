@@ -13,7 +13,7 @@ It looks quite scary, and I'm not sure whether I can motivate myself enough to g
 | 2016 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
 | 2017 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
 | 2018 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 2019 | ** | ** | ** | *  |    | ** |    | ** |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 2019 | ** | ** | ** | *  | *  | ** |    | ** |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
 
  
 
@@ -29,3 +29,5 @@ My main issues are definitely in the 'how can I do such a thing in Python?' – 
 I guess I'll pause 2015 for now and wait for 2019 to begin tomorrow morning.
 
 2019-12-07: Work takes its toll, and while I often got to read the puzzle in the morning, I did not have the time to think about it during the day. And in the evenings, there was other stuff to do or I was already too tired to think about anything anymore. However, today I wanted to get day 3, part 2 to work (after lots of trial and error during last week's evenings), and it took me almost an hour of fiddling around with my code until I needed to google some Python functionality – and then notice that I have no internet access. Enjoy the little things :) And yes, that code is still far from enjoyable. I should probably do more list comprehension.
+
+2019-12-19: Current challenge at work would be to get some basic knowledge in Java (well, wanted to learn object-oriented programming anyway, so there's that), however, all those intcode puzzles were quite demotivating for me because of the abomination I used to solve the first intcode puzzle on day 2. Today, I was finally able to refactor day 2 to make it extendable to day 5, part 1, and even though I can see the room for improvement regarding my code, at least, I got another star. So currently, I have two things to decide between: basic Java during the next three weeks (so until my vacation ends) and more Python with AoC. I tend to focus a bit more on the Java stuff because this would force me to use object-oriented programming which might improve my Python later. And the current AoC puzzles are way over my abilities anyway (I do understand the problems but I have no clue how to implement any of the solutions).
