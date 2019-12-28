@@ -1,3 +1,20 @@
+### Temporary files
 *.swp
+
+### Code by other people used as hints for my solution
 *.hint
+
+### Puzzle text
 *.puzzle
+
+### Puzzle input
+*.txt
+
+### Java & VSCodium related
+aoc2016.code-workspace
+.metadata/*
+**/.bin
+**/.classpath
+**/.project
+**/.settings
+/.metadata/
