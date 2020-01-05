@@ -34,7 +34,8 @@ Solution written in:
 
 | 2018 |||||||||||||||||||||||||
 
-| 2019 | &#9734;&#9734; | &#9734;&#9734; | &#9734;&#9734; | &#9734;&#9734; | &#9734;  |
+| 2019 | &#9734;&#9734; | &#9734;&#9734; | &#9734;&#9734;
+| &#9734;&#9734; | &#9734;&#9734;  |
 &#9734;&#9734; || &#9734;&#9734; |||||
 |||||||
 |||||
@@ -108,8 +109,16 @@ expressions). And of course, it is not very object-oriented (apart
 from what Java provides and enforces).
 
 2020-01-05:: Funny how much one can learn if one only begins :) I even
-introduced object-orientation in my Java solutions without any
+introduced object-orientation into my Java solutions without any
 necessity but just for fun. I think I have reached a basic
 understanding of how all of this works. Next step would probably be to
 get my Python more object-oriented.
-
++
+Several hours later: I have a running Intcode program for 2019, day 5,
+part 2.  Yes, I'm a month late, but when I first read day 5, part 1,
+I already thought I'd never solve it. And after I had solved it and
+read part 2, I had exactly the same thought. I didn't even understand
+all of it. Theoretical knowledge about Turing machines does not solve
+assembly-like puzzles, obviously. I have not yet taken a closer look
+at the next Intcode puzzle, but I'm afraid I'm going to think that
+I will not be able to solve it when I do…
