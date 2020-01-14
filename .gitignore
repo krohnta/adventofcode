@@ -10,7 +10,7 @@
 ### Puzzle input
 *.txt
 
-### Java & VSCodium related
+### Java & VSCodium & PyCharm related
 aoc2016.code-workspace
 .metadata/*
 **/.bin
@@ -18,3 +18,4 @@ aoc2016.code-workspace
 **/.project
 **/.settings
 /.metadata/
+.idea/*
